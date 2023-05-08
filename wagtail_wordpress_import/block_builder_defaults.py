@@ -1,8 +1,8 @@
 import requests
+from tempfile import NamedTemporaryFile
 from bs4 import BeautifulSoup
 from django.conf import settings
 from django.core.files import File
-from django.core.files.temp import NamedTemporaryFile
 from django.utils.module_loading import import_string
 from wagtail.documents import get_document_model
 from wagtail.images import get_image_model
@@ -121,7 +121,7 @@ def get_or_save_image(src):
                 ],
             )
         ):
-            temp_image = NamedTemporaryFile()
+            temp_image = NamedTemporaryFile(delete=True)
             temp_image.name = image_file_name
             temp_image.write(response.content)
             temp_image.flush()
@@ -202,7 +202,7 @@ def get_or_save_document(href):
                     ],
                 )
             ):
-                temp_document = NamedTemporaryFile()
+                temp_document = NamedTemporaryFile(delete=True)
                 temp_document.name = document_file_name
                 temp_document.write(response.content)
                 temp_document.flush()
