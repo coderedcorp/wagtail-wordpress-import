@@ -32,7 +32,7 @@ def build_xml_stream(xml_tags_fragment="", xml_items_fragment=""):
 
 def generate_temporary_file(xml_stream):
 
-    temp_file = tempfile.NamedTemporaryFile(delete=True)
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
 
     with open(temp_file.name, "w") as f:
         f.write(xml_stream)

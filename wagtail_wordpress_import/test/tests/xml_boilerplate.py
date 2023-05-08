@@ -1,4 +1,3 @@
-import os
 import tempfile
 from io import StringIO
 
@@ -33,8 +32,7 @@ def build_xml_stream(xml_tags_fragment="", xml_items_fragment=""):
 
 def generate_temporay_file(xml_stream):
 
-    if os.name = "nt"
-    temp_file = tempfile.NamedTemporaryFile(delete=True)
+    temp_file = tempfile.NamedTemporaryFile(delete=False)
 
     with open(temp_file.name, "w") as f:
         f.write(xml_stream)
